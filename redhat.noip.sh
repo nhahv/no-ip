@@ -56,7 +56,11 @@ stop() {
 restart() {
 	stop
 	start
-}	
+}
+
+status () {
+	/usr/local/bin/noip2 -S
+}
 
 case "$1" in
   start)
@@ -65,11 +69,14 @@ case "$1" in
   stop)
   	stop
 	;;
+  status)
+  	status
+	;;
   restart)
   	restart
 	;;
   *)
-	echo $"Usage: $0 {start|stop|restart}"
+	echo $"Usage: $0 {start|stop|restart|status}"
 	exit 1
 esac
 
